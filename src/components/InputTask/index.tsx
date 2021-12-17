@@ -17,6 +17,7 @@ export function InputTask() {
 
   const handleNewTask = () => {
     dispatch(addTask({ title: taskTitle }));
+    setTaskTitle('');
   };
 
   return (
@@ -26,6 +27,7 @@ export function InputTask() {
           type="text"
           name="inputTask"
           id="inputTask"
+          value={taskTitle}
           onChange={handleTaskTitle}
         />
       </label>
