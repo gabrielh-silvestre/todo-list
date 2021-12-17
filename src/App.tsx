@@ -1,5 +1,11 @@
+import { Header } from './components/Header'
+
 function App() {
-  return <div className="text-9xl">Hello World</div>;
+  return (
+    <div className='h-screen bg-gray-dark'>
+      <Header />
+    </div>
+  );
 }
 
 export default App;
