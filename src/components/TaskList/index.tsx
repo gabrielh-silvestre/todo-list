@@ -1,13 +1,17 @@
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
+
 import { TaskItem } from '../TaskItem';
 import { Container } from './styles';
 
 export default function TaskList() {
+  const tasks = useSelector((state: RootState) => state.taskReducer.tasks);
+
   return (
     <Container>
-      <TaskItem title="Título 1" />
-      <TaskItem title="Título 2" />
-      <TaskItem title="Título 3" />
-      <TaskItem title="Título 4" />
+      {tasks.map((task) => (
+        <TaskItem title={task.title} />
+      ))}
     </Container>
   );
 }
