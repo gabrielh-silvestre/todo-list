@@ -15,9 +15,15 @@ export function InputTask() {
     setTaskTitle(value);
   };
 
-  const handleNewTask = () => {
+  const createNewTask = () => {
     dispatch(addTask({ title: taskTitle }));
     setTaskTitle('');
+  };
+
+  const handleUserType = ({ key }: React.KeyboardEvent<HTMLInputElement>) => {
+    if (key === 'Enter') {
+      createNewTask();
+    }
   };
 
   return (
@@ -29,10 +35,11 @@ export function InputTask() {
           id="inputTask"
           value={taskTitle}
           onChange={handleTaskTitle}
+          onKeyUp={handleUserType}
         />
       </label>
 
-      <CreateTaskButton type="button" onClick={handleNewTask}>
+      <CreateTaskButton type="button" onClick={createNewTask}>
         Criar
       </CreateTaskButton>
     </Container>
