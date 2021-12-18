@@ -1,10 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface Task {
+  taskId: number;
   title: string;
   description?: string;
-  isDone: boolean;
+  isDone?: boolean;
 }
+
+type ManipulateTask = Pick<Task, 'taskId' | 'isDone'>;
 
 interface TasksState {
   tasks: Task[];
@@ -19,14 +22,22 @@ const tasksSlice = createSlice({
     addTask(state, action: PayloadAction<Task>) {
       state.tasks.push(action.payload);
     },
-    toggleComplete({ tasks }, { payload }: PayloadAction<Task>) {
-      const rightIndex = tasks.findIndex(
-        ({ title }) => title === payload.title
+
+    toggleComplete({ tasks }, { payload }: PayloadAction<ManipulateTask>) {
+      const taskIndex = tasks.findIndex(
+        ({ taskId }) => taskId === payload.taskId
       );
-      tasks[rightIndex] = { ...tasks[rightIndex], isDone: !payload.isDone };
+      tasks[taskIndex] = { ...tasks[taskIndex], isDone: !payload.isDone };
+    },
+
+    deleteTask({ tasks }, { payload }: PayloadAction<ManipulateTask>) {
+      const taskIndex = tasks.findIndex(
+        ({ taskId }) => taskId === payload.taskId
+      );
+      tasks.splice(taskIndex, 1);
     },
   },
 });
 
-export const { addTask, toggleComplete } = tasksSlice.actions;
+export const { addTask, toggleComplete, deleteTask } = tasksSlice.actions;
 export default tasksSlice.reducer;
