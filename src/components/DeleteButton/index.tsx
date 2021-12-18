@@ -4,7 +4,7 @@ import { deleteTask } from '../../slice';
 import { ButtonContainer } from './styles';
 
 interface DeleteButtonProps {
-  taskId: number;
+  taskId: string;
 }
 
 export function DeleteButton({ taskId }: DeleteButtonProps) {

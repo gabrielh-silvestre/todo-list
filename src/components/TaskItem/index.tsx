@@ -5,7 +5,7 @@ import { DeleteButton } from '../DeleteButton';
 import { Container, TaskDescription, TaskDone, TaskTitle } from './syles';
 
 interface TaskItemProps {
-  taskId: number;
+  taskId: string;
   title: string;
   description?: string;
   isDone: boolean;

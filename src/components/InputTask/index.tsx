@@ -19,7 +19,7 @@ export function InputTask() {
 
   const createNewTask = () => {
     dispatch(
-      addTask({ taskId: tasks.length, title: taskTitle, isDone: false })
+      addTask({ taskId: `${taskTitle}-${tasks.length}`, title: taskTitle, isDone: false })
     );
     setTaskTitle('');
   };

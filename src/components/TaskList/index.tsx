@@ -9,12 +9,12 @@ export default function TaskList() {
 
   return (
     <Container>
-      {tasks.map((task, i) => (
+      {tasks.map(({ taskId, title, isDone }) => (
         <TaskItem
-          key={i}
-          taskId={i}
-          title={task.title}
-          isDone={task.isDone ? true : false}
+          key={taskId}
+          taskId={taskId}
+          title={title}
+          isDone={isDone ? true : false}
         />
       ))}
     </Container>
