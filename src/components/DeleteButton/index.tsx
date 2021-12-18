@@ -1,8 +1,17 @@
-import { ButtonContainer } from "./styles";
+import { useDispatch } from 'react-redux';
+import { deleteTask } from '../../slice';
 
-export function DeleteButton() {
+import { ButtonContainer } from './styles';
+
+interface DeleteButtonProps {
+  taskId: number;
+}
+
+export function DeleteButton({ taskId }: DeleteButtonProps) {
+  const dispatch = useDispatch();
+
   return (
-    <ButtonContainer>
+    <ButtonContainer onClick={() => dispatch(deleteTask({ taskId: taskId }))}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-5 w-5"
