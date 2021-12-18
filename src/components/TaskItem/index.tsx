@@ -5,12 +5,13 @@ import { DeleteButton } from '../DeleteButton';
 import { Container, TaskDescription, TaskDone, TaskTitle } from './syles';
 
 interface TaskItemProps {
+  taskId: number;
   title: string;
   description?: string;
   isDone: boolean;
 }
 
-export function TaskItem({ title, description, isDone }: TaskItemProps) {
+export function TaskItem({ title, description, isDone, taskId }: TaskItemProps) {
   const dispatch = useDispatch();
 
   return (
@@ -27,12 +28,12 @@ export function TaskItem({ title, description, isDone }: TaskItemProps) {
         <TaskDone
           $isDone={isDone}
           onClick={() => {
-            dispatch(toggleComplete({ title, isDone }));
+            dispatch(toggleComplete({ taskId, isDone }));
           }}
         />
       </div>
 
-      <DeleteButton />
+      <DeleteButton taskId={taskId} />
     </Container>
   );
 }
