@@ -9,6 +9,7 @@ module.exports = {
       'gray': '#444444',
       'gray-light': '#EDEDED',
       'red': '#DA0037',
+      'green': '#39C18C',
     },
     container: {
       center: true,

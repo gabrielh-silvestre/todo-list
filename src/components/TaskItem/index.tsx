@@ -1,18 +1,33 @@
-import { Container, TaskDescription, TaskTitle } from './syles';
+import { useDispatch } from 'react-redux';
+
+import { toggleComplete } from '../../slice';
+import { Container, TaskDescription, TaskDone, TaskTitle } from './syles';
 
 interface TaskItemProps {
   title: string;
   description?: string;
+  isDone: boolean;
 }
 
-export function TaskItem({ title, description }: TaskItemProps) {
+export function TaskItem({ title, description, isDone }: TaskItemProps) {
+  const dispatch = useDispatch();
+
   return (
     <Container>
-      <TaskTitle>{title}</TaskTitle>
+      <div>
+        <TaskTitle>{title}</TaskTitle>
 
-      <TaskDescription>
-        {description ? description : 'Descrição'}
-      </TaskDescription>
+        <TaskDescription>
+          {description ? description : 'Descrição'}
+        </TaskDescription>
+      </div>
+
+      <TaskDone
+        $isDone={isDone}
+        onClick={() => {
+          dispatch(toggleComplete({ title, isDone }));
+        }}
+      />
     </Container>
   );
 }
