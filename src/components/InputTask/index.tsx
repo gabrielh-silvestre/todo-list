@@ -16,7 +16,7 @@ export function InputTask() {
   };
 
   const createNewTask = () => {
-    dispatch(addTask({ title: taskTitle }));
+    dispatch(addTask({ title: taskTitle, isDone: false }));
     setTaskTitle('');
   };
 
