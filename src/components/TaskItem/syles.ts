@@ -37,5 +37,5 @@ export const TaskDone = tw.div<{ $isDone: boolean }>`
   transition-colors
   duration-150
 
-  ${({ $isDone }) => $isDone ? 'bg-red' : 'bg-gray-light'}
+  ${({ $isDone }) => $isDone ? 'bg-green' : 'bg-gray-light'}
 `;
