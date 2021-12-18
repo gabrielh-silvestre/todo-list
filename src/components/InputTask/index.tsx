@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { addTask } from '../../slice';
+import { RootState } from '../../store';
 
 import { Container, CreateTaskButton, Input } from './styles';
 
 export function InputTask() {
   const [taskTitle, setTaskTitle] = useState('');
   const dispatch = useDispatch();
+  const tasks = useSelector(({ taskReducer: { tasks } }: RootState) => tasks);
 
   const handleTaskTitle = ({
     target: { value },
@@ -16,7 +18,9 @@ export function InputTask() {
   };
 
   const createNewTask = () => {
-    dispatch(addTask({ title: taskTitle, isDone: false }));
+    dispatch(
+      addTask({ taskId: tasks.length, title: taskTitle, isDone: false })
+    );
     setTaskTitle('');
   };
 
