@@ -15,6 +15,9 @@ interface TasksState {
 
 const INITIAL_STATE = { tasks: [] } as TasksState;
 
+const findTaskIndex = (tasksArr: Task[], payloadID: ManipulateTask) =>
+  tasksArr.findIndex(({ taskId }) => taskId === payloadID.taskId);
+
 const tasksSlice = createSlice({
   name: 'taskList',
   initialState: INITIAL_STATE,
@@ -24,16 +27,12 @@ const tasksSlice = createSlice({
     },
 
     toggleComplete({ tasks }, { payload }: PayloadAction<ManipulateTask>) {
-      const taskIndex = tasks.findIndex(
-        ({ taskId }) => taskId === payload.taskId
-      );
+      const taskIndex = findTaskIndex(tasks, payload);
       tasks[taskIndex] = { ...tasks[taskIndex], isDone: !payload.isDone };
     },
 
     deleteTask({ tasks }, { payload }: PayloadAction<ManipulateTask>) {
-      const taskIndex = tasks.findIndex(
-        ({ taskId }) => taskId === payload.taskId
-      );
+      const taskIndex = findTaskIndex(tasks, payload);
       tasks.splice(taskIndex, 1);
     },
   },
