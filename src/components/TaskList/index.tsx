@@ -10,7 +10,7 @@ export default function TaskList() {
   return (
     <Container>
       {tasks.map((task) => (
-        <TaskItem title={task.title} />
+        <TaskItem title={task.title} isDone={task.isDone} />
       ))}
     </Container>
   );
