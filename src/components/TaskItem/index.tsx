@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 
 import { toggleComplete } from '../../slice';
+import { DeleteButton } from '../DeleteButton';
 import { Container, TaskDescription, TaskDone, TaskTitle } from './syles';
 
 interface TaskItemProps {
@@ -22,12 +23,16 @@ export function TaskItem({ title, description, isDone }: TaskItemProps) {
         </TaskDescription>
       </div>
 
-      <TaskDone
-        $isDone={isDone}
-        onClick={() => {
-          dispatch(toggleComplete({ title, isDone }));
-        }}
-      />
+      <div>
+        <TaskDone
+          $isDone={isDone}
+          onClick={() => {
+            dispatch(toggleComplete({ title, isDone }));
+          }}
+        />
+      </div>
+
+      <DeleteButton />
     </Container>
   );
 }

@@ -7,6 +7,8 @@ export const Container = tw.section`
   py-3
   px-6
 
+  relative
+
   flex
   justify-between
   items-center
