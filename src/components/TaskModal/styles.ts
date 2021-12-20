@@ -34,6 +34,10 @@ export const ButtonsContainer = tw.section`
   justify-around
 `;
 
+export const InputContainer = tw.label`
+  w-full
+`;
+
 export const TitleInput = tw.input`
   h-12
 
@@ -47,4 +51,18 @@ export const TitleInput = tw.input`
   rounded-md
 
   bg-gray-light
+`;
+
+export const DescriptionText = tw.textarea`
+  w-full
+  h-24
+
+  px-4
+
+  text-lg
+  text-gray-dark
+
+  bg-gray-light
+
+  resize-none
 `;
