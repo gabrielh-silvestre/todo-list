@@ -18,9 +18,11 @@ export const Container = tw.section`
   bg-gray-light
 `;
 
-export const TaskTitle = tw.h3`
+export const TaskTitle = tw.h3<{ $isDone: boolean }>`
   text-2xl
   text-gray-dark
+
+  ${({ $isDone }) => ($isDone ? 'line-through	' : '')}
 `;
 
 export const TaskDescription = tw.p`
@@ -39,5 +41,5 @@ export const TaskDone = tw.div<{ $isDone: boolean }>`
   transition-colors
   duration-150
 
-  ${({ $isDone }) => $isDone ? 'bg-green' : 'bg-gray-light'}
+  ${({ $isDone }) => ($isDone ? 'bg-green' : 'bg-gray-light')}
 `;

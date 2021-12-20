@@ -11,13 +11,18 @@ interface TaskItemProps {
   isDone: boolean;
 }
 
-export function TaskItem({ title, description, isDone, taskId }: TaskItemProps) {
+export function TaskItem({
+  title,
+  description,
+  isDone,
+  taskId,
+}: TaskItemProps) {
   const dispatch = useDispatch();
 
   return (
     <Container>
       <div>
-        <TaskTitle>{title}</TaskTitle>
+        <TaskTitle $isDone={isDone}>{title}</TaskTitle>
 
         <TaskDescription>
           {description ? description : 'Descrição'}
