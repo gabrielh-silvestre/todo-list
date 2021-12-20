@@ -1,14 +1,11 @@
-import { Header } from './components/Header'
-import { InputTask } from './components/InputTask';
-import TaskList from './components/TaskList';
+import { Home } from "./pages/Home";
+
 
 function App() {
   return (
-    <div className='h-screen bg-gray-dark'>
-      <Header />
-      <InputTask />
-      <TaskList />
-    </div>
+    <>
+      <Home />
+    </>
   );
 }
 
