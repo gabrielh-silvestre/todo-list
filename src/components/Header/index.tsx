@@ -1,14 +1,10 @@
-import { Link } from 'react-router-dom';
-
 import { ContentContainer, HeaderContainer, Anchor } from './styles';
 
 export function Header() {
   return (
     <HeaderContainer>
       <ContentContainer>
-        <Link to="/">
-          <h1 className="cursor-default">Todo-List</h1>
-        </Link>
+        <h1 className="cursor-default">Todo-List</h1>
 
         <nav>
           <Anchor
