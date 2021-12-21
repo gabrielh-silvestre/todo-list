@@ -38,7 +38,7 @@ export function TaskItem({
         <TaskTitle $isDone={isDone}>{title}</TaskTitle>
 
         <TaskDescription>
-          {description ? description : 'Descrição'}
+          {description ? description : 'Descrição...'}
         </TaskDescription>
       </div>
 
