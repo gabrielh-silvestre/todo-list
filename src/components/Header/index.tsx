@@ -4,7 +4,7 @@ export function Header() {
   return (
     <HeaderContainer>
       <ContentContainer>
-        <h1 className='cursor-default'>Todo-List</h1>
+        <h1 className="cursor-default">Todo-List</h1>
 
         <nav>
           <Anchor

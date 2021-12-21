@@ -22,8 +22,8 @@ const tasksSlice = createSlice({
   name: 'taskList',
   initialState: INITIAL_STATE,
   reducers: {
-    addTask(state, action: PayloadAction<Task>) {
-      state.tasks.push(action.payload);
+    addTask({ tasks }, { payload }: PayloadAction<Task>) {
+      tasks.push(payload);
     },
 
     toggleComplete({ tasks }, { payload }: PayloadAction<ManipulateTask>) {
@@ -35,8 +35,14 @@ const tasksSlice = createSlice({
       const taskIndex = findTaskIndex(tasks, payload);
       tasks.splice(taskIndex, 1);
     },
+
+    attTask({ tasks }, { payload }: PayloadAction<Task>) {
+      const taskIndex = findTaskIndex(tasks, payload);
+      const newTask = payload;
+      tasks.splice(taskIndex, 1, newTask);
+    },
   },
 });
 
-export const { addTask, toggleComplete, deleteTask } = tasksSlice.actions;
+export const { addTask, toggleComplete, deleteTask, attTask } = tasksSlice.actions;
 export default tasksSlice.reducer;
