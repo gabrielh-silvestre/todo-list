@@ -1,18 +1,17 @@
-import { Route, Switch } from 'react-router-dom';
 import { Header } from './components/Header';
-import { Home } from './pages/Home';
-import { TaskDetail } from './pages/TaskDetail';
+import { InputTask } from './components/InputTask';
+import TaskList from './components/TaskList';
+import { GlobalStyle } from './styles/global';
 
 function App() {
   return (
     <div className="h-screen bg-gray-dark">
       <Header />
       <main>
-        <Switch>
-          <Route path="/task" render={TaskDetail} />
-          <Route exact path="/" render={Home} />
-        </Switch>
+        <InputTask />
+        <TaskList />
       </main>
+      <GlobalStyle />
     </div>
   );
 }
