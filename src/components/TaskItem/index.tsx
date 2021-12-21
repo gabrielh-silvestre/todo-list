@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { toggleComplete } from '../../slice';
 import { DeleteButton } from '../DeleteButton';
+import { TaskModal } from '../TaskModal';
+import Modal from 'react-modal';
+
 import { Container, TaskDescription, TaskDone, TaskTitle } from './syles';
 
 interface TaskItemProps {
@@ -17,11 +21,20 @@ export function TaskItem({
   isDone,
   taskId,
 }: TaskItemProps) {
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
   const dispatch = useDispatch();
+
+  const openTaskModal = () => {
+    setIsTaskModalOpen(true);
+  };
+
+  const closeTaskModal = () => {
+    setIsTaskModalOpen(false);
+  };
 
   return (
     <Container>
-      <div>
+      <div onClick={openTaskModal}>
         <TaskTitle $isDone={isDone}>{title}</TaskTitle>
 
         <TaskDescription>
@@ -39,6 +52,15 @@ export function TaskItem({
       </div>
 
       <DeleteButton taskId={taskId} />
+
+      <Modal
+        overlayClassName="react-modal-overlay"
+        className="react-modal-content"
+        isOpen={isTaskModalOpen}
+        onRequestClose={closeTaskModal}
+      >
+        <TaskModal taskId={taskId} title={title} description={description} closeModal={closeTaskModal} />
+      </Modal>
     </Container>
   );
 }
