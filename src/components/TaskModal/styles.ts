@@ -1,23 +1,5 @@
 import tw from 'tailwind-styled-components';
 
-export const Container = tw.article`
-  container
-
-  mt-8
-`;
-
-export const ContentContainer = tw.div`
-  py-8
-
-  flex
-  flex-col
-  items-center
-
-  rounded-md
-
-  bg-gray-light
-`;
-
 export const InfoContainer = tw.section`
   mb-8
 
@@ -39,10 +21,11 @@ export const InputContainer = tw.label`
 `;
 
 export const TitleInput = tw.input`
+  w-full
+
   h-12
 
   mb-4
-  px-8
 
   text-center
   text-4xl
@@ -66,3 +49,21 @@ export const DescriptionText = tw.textarea`
 
   resize-none
 `;
+
+export const ModalButton = tw.button<{ $action: 'save' | 'cancel' }>`
+  w-1/3
+  h-10
+
+  px-4
+
+  text-gray-dark
+
+  rounded-md
+
+  ${({ $action }) => ($action === 'save' ? 'bg-green' : 'bg-red')}
+
+  duration-150
+
+  hover:brightness-90
+`;
+
