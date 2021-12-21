@@ -1,7 +1,11 @@
 import { Header } from './components/Header';
 import { InputTask } from './components/InputTask';
 import TaskList from './components/TaskList';
+import Modal from 'react-modal';
+
 import { GlobalStyle } from './styles/global';
+
+Modal.setAppElement('#root');
 
 function App() {
   return (
